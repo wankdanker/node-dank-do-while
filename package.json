@@ -1,6 +1,6 @@
 {
   "name": "dank-do-while",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An asynchronous do-while-like function",
   "main": "index.js",
   "scripts": {
