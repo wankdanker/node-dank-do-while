@@ -16,7 +16,7 @@ module.exports = function doWhile (fn, done) {
   run(fn)
   
   function run (fn) {
-    process.nextTick(function() {
+    setImmediate(function() {
       fn(function (cont) {
         if (cont) {
           run(fn)
