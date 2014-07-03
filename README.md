@@ -13,14 +13,16 @@ npm install dank-do-while
 method
 ------
 
-### doWhile(eachFunction, doneFunction);
+### doWhile(eachFunction, doneFunction, concurrency);
 
 **eachFunction** will be called once initially and then again
   for each time that `next(truthy)` is called
 
   Signature is `function(next)`
 
-**doneFuntion** will be called once when `next(falsy)` is called
+**doneFunction** will be called once when `next(falsy)` is called
+
+**concurrency** the number of concurrent **eachFunction**'s that may be executed
 
 example
 -------
@@ -43,7 +45,7 @@ license
 ### The MIT License (MIT)
 
 
-Copyright (c) 2012 Daniel L. VerWeire
+Copyright (c) 2014 Dan VerWeire
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

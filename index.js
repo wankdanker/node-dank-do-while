@@ -9,20 +9,33 @@
 // }
 // , function () {
 //   return cb()
-// })
+// }, 3) //concurrency
 //
 
-module.exports = function doWhile (fn, done) {
-  run(fn)
+module.exports = function doWhile (fn, done, concurrent) {
+  var pending = 0;
+  var end = false;
+  concurrent = concurrent || 1;
+
+  for (var x = 0; x < concurrent; x++) {
+    run(fn)
+  }
   
   function run (fn) {
     setImmediate(function() {
+      pending += 1;
       fn(function (cont) {
-        if (cont) {
+        pending -= 1;
+
+        if (!cont) {
+          end = true;
+        }
+
+        if (!end) {
           run(fn)
         }
-        else if (done) {
-          done()
+        else if (end && pending === 0) {
+          done();
         }
       })
     })
