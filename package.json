@@ -2,9 +2,21 @@
   "name": "dank-do-while",
   "version": "0.1.2",
   "description": "An asynchronous do-while-like function",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/dank-do-while.umd.cjs",
+  "module": "./dist/dank-do-while.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/dank-do-while.js",
+      "require": "./dist/dank-do-while.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
-    "test": "nodeunit test.js"
+    "dev": "vitest",
+    "build": "tsc && vite build",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -16,5 +28,11 @@
     "async"
   ],
   "author": "Dan VerWeire",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0"
+  }
 }
